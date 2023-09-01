@@ -1,3 +1,15 @@
+# Component Hierachy
+
+- TaxCalculator
+  -  CalculatorHeader
+  -  CalculatorBody
+    -  TaxResults
+       - TotalTax
+       - EffectiveRate
+       - TaxPerBand
+    - Notification
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
