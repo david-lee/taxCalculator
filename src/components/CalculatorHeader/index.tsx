@@ -3,16 +3,12 @@ import { Grid, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import useAPIClient from "../../shared/hooks/useAPIClient";
-import { TaxCalcInfo } from "../../models/taxes";
-
-interface CalculatorHeaderProps {
-  onLoadTaxData: ({ taxYear, annualIncome, taxPerBand }: TaxCalcInfo ) => void;
-}
+import { CalculatorHeaderProps } from "../../models/calculatorHeader";
 
 // get user an annualIncome and a tax year from a user and load tax per band
 // once tax brackets are loaded it will be returned to the parent along with user inputs
 const CalculatorHeader = ({ onLoadTaxData }: CalculatorHeaderProps) => {
-  // by default, show the previous tax year
+  // show the previous tax year as default
   const [taxYear, setTaxYear] = useState(() => (new Date().getFullYear() - 1).toString());
   const [annualIncome, setAnnualIncome] = useState<string|number>("");
   const [isValidInputs, setIsValueInputs] = useState(false);
@@ -26,14 +22,16 @@ const CalculatorHeader = ({ onLoadTaxData }: CalculatorHeaderProps) => {
 
   useEffect(() => {
     if (data) {
-      console.log("tax per band: ", data);
-
       onLoadTaxData({ 
         taxYear,
         annualIncome: annualIncome as number,
         taxPerBand: data.tax_brackets
       });
     }
+
+  // Note: onLoadTaxData should be called only when data is retried
+  //    so taxYear, annualIncome and taxPerBand shouldn't be included in the dependency
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -45,6 +43,7 @@ const CalculatorHeader = ({ onLoadTaxData }: CalculatorHeaderProps) => {
       <TextField label="Annual Income" value={annualIncome} inputProps={{ "data-testid": "annual-income "}}
         onChange={(e) => { setAnnualIncome(e.target.value) }}
       />
+
       <LoadingButton variant="contained" data-testid="calculate-btn" startIcon={<CalculateIcon />}
         disabled={!isValidInputs || !!error} loading={loading}
         onClick={() => makeRequest({ url: `tax-year/${taxYear}` })}

@@ -38,7 +38,7 @@ export const transformTaxPerBand = (annualIncome: number, taxPerBand: any): [num
         additionalIncome, 
         additionalTax, 
         basicTaxForTheBand,
-        totalTax: basicTaxForTheBand + additionalTax
+        totalTax: isIncomeInTheBand ? basicTaxForTheBand + additionalTax : 0
       }
     });
   

@@ -1,15 +1,19 @@
-import React from "react";
+import { Button } from "@mui/material";
 
 interface ErrorFallbackProps {
   error: { message: string };
   resetErrorBoundary?: () => void;
 }
+
+// It is a fallback component to show an error message. It will be called from ErroBoundary component
 const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
   return (
     <div role="alert">
-      <p>Something went wrong:</p>
+      <p>
+        Thank you for making us aware of the issue. We hope to solve the problem as soon as possible.
+      </p>
       <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
+      <Button onClick={resetErrorBoundary}>Try Again</Button>
     </div>    
   );
 }
