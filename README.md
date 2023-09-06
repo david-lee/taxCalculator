@@ -1,13 +1,12 @@
-# Component Hierachy
+# Component Hierarchy
 
 - TaxCalculator
   -  CalculatorHeader
   -  CalculatorBody
     -  TaxResults
-       - TotalTax
-       - EffectiveRate
        - TaxPerBand
-    - Notification
+
+![Component Hierarchy](./comp-hierarchy.png)
 
 
 # Getting Started with Create React App
