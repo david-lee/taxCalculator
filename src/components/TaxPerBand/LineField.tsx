@@ -35,7 +35,7 @@ const LineField = (
           fontWeight: `${isCalcedLine ? "bold" : ""}`
         }}
       >
-        {isRate ? formatPercent(value as number) : value ? formatCurrency(value as number) : ""}
+        {isRate ? formatPercent(value as number * 100) : value ? formatCurrency(value as number) : ""}
       </Typography>
     </Grid>
   )

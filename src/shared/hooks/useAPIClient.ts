@@ -35,7 +35,6 @@ const useAPIClient = ({
       
       setRespData(response.data);
     } catch (e) {
-      console.log("error on makeRequest: ", e);
       setError(e);
       // Note: if router is used, we can redirect to specific route instead of throwing an error
       // for example, 401 or 403 error for authentication

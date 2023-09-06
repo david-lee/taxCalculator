@@ -1,7 +1,5 @@
 import { CalcedTaxPerBandType, TaxPerBandType } from "../models/taxes";
 
-export const formatNumber = (num: number) => (Math.round(num * 1000) / 1000).toFixed(2);
-
 export const transformTaxPerBand = (annualIncome: number, taxPerBand: any): [number, Array<CalcedTaxPerBandType>] => {
   let prevBandRate: number;
   let prevMin: number;

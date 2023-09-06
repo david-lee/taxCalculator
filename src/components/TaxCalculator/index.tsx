@@ -14,7 +14,6 @@ const TaxCalculator = () => {
 
   const handleErrors = useCallback((error: unknown) => {
     // TODO: send error to a remote server, if available: like Sentry
-    console.log("Error on tax calculation: ", error);
   }, []);
 
   return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import TaxPerBand from "../TaxPerBand";
-import { Grid, InputAdornment, TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import { CalcedTaxPerBandType } from "../../models/taxes";
-import { formatNumber, transformTaxPerBand } from "../../shared/helpers";
+import { transformTaxPerBand } from "../../shared/helpers";
 import { CalculatorBodyProps } from "../../models/calculatorBody";
 import { useErrorBoundary } from "react-error-boundary";
 import { useIntl } from "react-intl";
@@ -35,12 +35,12 @@ const CalculatorBody = ({ annualIncome = 0, taxPerBand }: CalculatorBodyProps) =
   return (
     <Grid container item flexDirection="column" flex={1} mt={4}>
       <Grid container item justifyContent="space-around" sx={{ my: 4 }}>
-        <TextField label="Total Tax" 
-          value={intl.formatNumber(calcedTotalTax, { style: "currency", currency: "USD", maximumFractionDigits: 2 })} variant="standard" 
+        <TextField label="Total Tax" variant="standard"
+          value={intl.formatNumber(calcedTotalTax, { style: "currency", currency: "USD", maximumFractionDigits: 2 })} 
           sx={{ input: { textAlign: "right" }}} 
         />
-        <TextField label="Effective Tax Rate" 
-          value={intl.formatNumber(effectiveTaxRate, { style: "unit", unit: "percent", maximumFractionDigits: 2 })} variant="standard" 
+        <TextField label="Effective Tax Rate"  variant="standard"
+          value={intl.formatNumber(effectiveTaxRate, { style: "unit", unit: "percent", maximumFractionDigits: 2 })} 
           sx={{ input: { textAlign: "right" }}} 
         />
       </Grid>
